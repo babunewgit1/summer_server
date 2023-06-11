@@ -188,7 +188,7 @@ async function run() {
           available_seats: classData.Seat,
         },
       };
-      const result = await allClass.updateOne(filter, updateDoc);
+      const result = await allClass.updateOne(filter, updateDo);
       res.send(result);
     });
 
