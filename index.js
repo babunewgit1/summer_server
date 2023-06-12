@@ -177,20 +177,25 @@ async function run() {
       res.send(result);
     });
 
-    app.patch(`/class/:id`, verifyJWT, verifyinstructor, async (req, res) => {
-      const getUpdateId = req.params.id;
-      const classData = req.body;
-      const filter = { _id: new ObjectId(getUpdateId) };
-      const updateDoc = {
-        $set: {
-          name: classData.name,
-          price: classData.price,
-          available_seats: classData.Seat,
-        },
-      };
-      const result = await allClass.updateOne(filter, updateDoc);
-      res.send(result);
-    });
+    app.patch(
+      `/classupdate/:id`,
+      verifyJWT,
+      verifyinstructor,
+      async (req, res) => {
+        const getUpdateId = req.params.id;
+        const classData = req.body;
+        const filter = { _id: new ObjectId(getUpdateId) };
+        const updateDoc = {
+          $set: {
+            name: classData.name,
+            price: classData.price,
+            available_seats: classData.Seat,
+          },
+        };
+        const result = await allClass.updateOne(filter, updateDoc);
+        res.send(result);
+      }
+    );
 
     app.patch("/class/:id", verifyJWT, verifyAdmin, async (req, res) => {
       const updateData = req.body;
