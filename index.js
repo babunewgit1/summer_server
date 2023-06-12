@@ -171,11 +171,11 @@ async function run() {
       res.send(result);
     });
 
-    // app.post("/class", verifyJWT, verifyinstructor, async (req, res) => {
-    //   const classData = req.body;
-    //   const result = await allClass.insertOne(classData);
-    //   res.send(result);
-    // });
+    app.post("/class", verifyJWT, verifyinstructor, async (req, res) => {
+      const classData = req.body;
+      const result = await allClass.insertOne(classData);
+      res.send(result);
+    });
 
     app.patch(`/class/:id`, verifyJWT, verifyinstructor, async (req, res) => {
       const getUpdateId = req.params.id;
