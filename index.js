@@ -189,7 +189,7 @@ async function run() {
         },
       };
       const result = await allClass.updateOne(filter, updateDoc);
-      // res.send(result);
+      res.send(result);
     });
 
     app.patch("/class/:id", verifyJWT, verifyAdmin, async (req, res) => {
